@@ -1,5 +1,6 @@
 package com.example.mvc.controller.get
 
+import com.example.mvc.model.http.UserRequest
 import org.springframework.web.bind.annotation.*
 
 
@@ -40,6 +41,34 @@ class GetApiController {
         return name + " " + age
     }
 
+    //https://localhost:8080/api/page?key=value&key=value&key=value
+    @GetMapping("/get-mapping/query-param")
+    fun queryParam(@RequestParam name:String, @RequestParam(value = "age") age:Int) : String{
+
+        println("${name}, ${age}")
+        return name + " " + age
+    }
+
+    // name, age, address, email
+    // url에서는 - 쓸 수 없음
+    // phoneNumber(대문자 불가) -> phone-number , phonenumber
+    // phone-number 같은 것은 파싱할 수 없다
+    @GetMapping("/get-mapping/query-param/object")
+    fun queryParamObject(userRequest: UserRequest): UserRequest {
+
+        println(userRequest)
+        return userRequest
+
+    }
+
+    @GetMapping("/get-mapping/query-param/map")
+    fun queryParamMap(@RequestParam map: Map<String, Any>): Map<String, Any> {
+        println(map.values)
+
+        val phoneNumber = map.get("phone-number")
+        println(phoneNumber)
+        return map
+    }
 
 
 }
