@@ -1,5 +1,6 @@
 package com.example.mvc.model.http
 
+import com.example.mvc.annotation.StringFormatDateTime
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.PropertyNamingStrategy
 import com.fasterxml.jackson.databind.annotation.JsonNaming
@@ -30,12 +31,14 @@ class UserRequest {
     @field:Pattern(regexp = "^\\d{2,3}-\\d{3,4}-\\d{4}\$") //정규식 검증
     var phoneNumber : String?=null // phone_number
 
+    @field:StringFormatDateTime(pattern = "yyyy-MM-dd HH:mm:ss", message = "패턴이 올바르지 않습니다")
     var createdAt:String?=null  // yyyy-MM-dd HH:mm:ss ex) 2020-10-02 13:00:00 형태로 시간을 받을 것이다
 
     // kotlin에서는 변수명에 -를 넣을 수 없다
     //var address-hello: ?=null
 
 
+    /*
     @AssertTrue(message = "생성일자의 패턴은 yyyy-MM-dd HH:mm:ss 이여야 합니다") // 검증 과정에서 메소드가 실행될 수 있도록
     private fun isValidCreatedAt():Boolean{ //정상 true, 비정상 false
 
@@ -47,9 +50,9 @@ class UserRequest {
         }catch(e:Exception){
             false
         }
-
-
     }
+
+     */
 
 
 }
