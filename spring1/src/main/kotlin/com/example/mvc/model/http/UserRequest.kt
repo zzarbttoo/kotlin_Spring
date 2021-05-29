@@ -38,7 +38,6 @@ class UserRequest {
     //var address-hello: ?=null
 
 
-    /*
     @AssertTrue(message = "생성일자의 패턴은 yyyy-MM-dd HH:mm:ss 이여야 합니다") // 검증 과정에서 메소드가 실행될 수 있도록
     private fun isValidCreatedAt():Boolean{ //정상 true, 비정상 false
 
@@ -51,8 +50,6 @@ class UserRequest {
             false
         }
     }
-
-     */
 
 
 }
