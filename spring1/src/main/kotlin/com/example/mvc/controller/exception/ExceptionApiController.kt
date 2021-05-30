@@ -35,11 +35,9 @@ class ExceptionApiController {
 
     @GetMapping("")
     fun get(
-
         @NotBlank
-        @Size(min = 2, max = 4)
+        @Size(min = 2, max = 6)
         @RequestParam name:String,
-
         @Min(10)
         @RequestParam age:Int
     ): String {
